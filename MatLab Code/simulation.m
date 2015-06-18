@@ -4,7 +4,7 @@
 total_var = 5; %5 because mood has been pre-set
 base_weight = 70; %starting weight of all agents
 base_height = 1.75; %starting height of all agents
-test_val = 3096; %test value for nrg in and enegery out
+%test_val = 3180.8; %test value for nrg in and energy out
 
 %input handling
 
@@ -51,11 +51,13 @@ while (year_count < total_year)
                 old_weight = agent_days(6+total_var);
             end
             %2set nrg_in for agent i
-            nrg_in = test_val;
+            nrg_in = set_intake(old_weight, agent_days(2,i));
+            temp(1,i) = nrg_in;
             %3set nrg_out for agent i
-            nrg_out = test_val;
             %4calc nrg_netto for agent i (energy expenditure)
-            nrg_netto = nrg_in - nrg_out;
+            nrg_out = set_expen(old_weight, agent_days(2,i), nrg_in);
+            temp(2,i) = nrg_out;
+            nrg_netto = nrg_in-nrg_out;
             temp(3,i) = nrg_netto;
             %5calc weight
             temp(4,i) = old_weight + (base_height * 0.6)+(nrg_netto/7716);
@@ -73,7 +75,7 @@ while (year_count < total_year)
     fprintf('Day: %d, year: %d\n', day_count, year_count);
     
     % Generating traces for the day
-    fprintf(trace, 'atom_trace(mood, mood, [range(%d, %d, %s)]).', day_count, day_count+1, mood);
+    %TODO: fprintf(trace, 'atom_trace(mood, mood, [range(%d, %d, %s)]).', day_count, day_count+1, mood);
     
 end
 %end while loop
