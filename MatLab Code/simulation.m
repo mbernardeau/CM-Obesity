@@ -14,7 +14,8 @@ agent_days = 1:total_agents;
 %save data in this big matrix that updates yearly (x2 because BMI and mood
 agent_year = [(total_year*2), total_agents];
 
-
+% Open trace file
+trace = fopen('trace.tr', 'w');
 
 %Functional stuff
 year_count = 0;
@@ -40,6 +41,9 @@ while (year_count < total_year)
         year_count = 1 + year_count;
     end
     fprintf('Day: %d, year: %d\n', day_count, year_count);
+    
+    % Generating traces for the day
+    fprint(trace, 'atom_trace(mood, mood, [range(%d, %d, %s)]).', day_count, day_count+1, mood);
     
 end
 %end while loop
