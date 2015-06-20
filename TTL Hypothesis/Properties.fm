@@ -1,0 +1,5 @@
+content(type(save_lt_editor('d:/Documents/Sauvegarde C/Documents/INSA/4A/Comparative Modelling/1-Assignment/CM-Obesity/TTL Hypothesis/Properties.fm'))).
+content(generator(app(leadsto_software, 127, [lteditor:1, psprinting:1]))).
+content(run([date('Sat Jun 20 12:45:31 2015')])).
+sortdef(agent, [1, 2]).
+denotes('GP1', forall([t:interval, 'A':agent, m:'TRACE'], implies(holds(state(m:'TRACE', time(t:interval)), weight('A', 'W'), true), 'W'>0))).

@@ -29,9 +29,12 @@ for i = 1:total_agents
 end
 agent_days = [agent_days;mood_line];
 
+fprintf(trace, 'times(%d, %d, %d).\n', 0, total_year*365, total_year*365);
+
 %Functional stuff
 year_count = 0;
 day_count = 0;
+
 %while loop
 while (year_count < total_year)
     day_count = day_count + 1;
@@ -43,7 +46,9 @@ while (year_count < total_year)
     for i = 1:total_agents
         if(day_count == 1)
             temp(4,i) = base_weight;
+            fprintf(trace, 'atom_trace(_, weight(%d, %f), [range(%d, %d, true)]).\n', i, temp(4,i), day_count, day_count+1);
             temp(5,i) = (temp(4, i)/(base_height)^2);
+            fprintf(trace, 'atom_trace(_, bmi(%d, %f), [range(%d, %d, true)]).\n', i, temp(5,i), day_count, day_count+1);
         else
             if(day_count == 2)
                 old_weight = agent_days(6);
@@ -53,16 +58,23 @@ while (year_count < total_year)
             %2set nrg_in for agent i
             nrg_in = set_intake(old_weight, agent_days(2,i));
             temp(1,i) = nrg_in;
+            fprintf(trace, 'atom_trace(_, nrg_in(%d, %f), [range(%d, %d, true)]).\n', i, temp(1,i), day_count, day_count+1);
+            
             %3set nrg_out for agent i
             %4calc nrg_netto for agent i (energy expenditure)
             nrg_out = set_expen(old_weight, agent_days(2,i), nrg_in);
             temp(2,i) = nrg_out;
+            fprintf(trace, 'atom_trace(_, nrg_out(%d, %f), [range(%d, %d, true)]).\n', i, temp(2,i), day_count, day_count+1);
             nrg_netto = nrg_in-nrg_out;
             temp(3,i) = nrg_netto;
+            fprintf(trace, 'atom_trace(_, nrg_netto(%d, %f), [range(%d, %d, true)]).\n', i, temp(5,i), day_count, day_count+1);
+            
             %5calc weight
             temp(4,i) = old_weight + (base_height * 0.6)+(nrg_netto/7716);
+            fprintf(trace, 'atom_trace(_, weight(%d, %f), [range(%d, %d, true)]).\n', i, temp(4,i), day_count, day_count+1);
             %6calc BMI
             temp(5,i) = (temp(4,i)/(base_height)^2);
+            fprintf(trace, 'atom_trace(_, bmi(%d, %f), [range(%d, %d, true)]).\n\n', i, temp(5,i), day_count, day_count+1);
         end
     end
     %append the now filled temp matrix to agent_days
@@ -75,7 +87,8 @@ while (year_count < total_year)
     fprintf('Day: %d, year: %d\n', day_count, year_count);
     
     % Generating traces for the day
-    %TODO: fprintf(trace, 'atom_trace(mood, mood, [range(%d, %d, %s)]).', day_count, day_count+1, mood);
+    %fprintf(trace, 'atom_trace(mood, mood, [range(%d, %d, %s)]).', day_count, day_count+1, mood);
     
 end
 %end while loop
+fclose(trace);
