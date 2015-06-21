@@ -22,6 +22,4 @@ function [expen] = set_expen(old_weight, mood, intake)
     end
     
     expen = 854+((10.15+nrg_out)*old_weight)+(0.1*intake);
-    
-    
 end
