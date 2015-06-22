@@ -9,7 +9,8 @@ base_height = 1.75; %starting height of all agents
 %input handling
 
 total_year = input('how long should the simulation last?');
-total_agents = input('how many agents are simulated?');
+%total_agents = input('how many agents are simulated?');
+total_agents = 3;
 
 display = fprintf('The simulation will run: %d Agents and take: %d Years\n', total_agents, total_year);
 
@@ -25,7 +26,7 @@ fprintf(trace, 'times(%d, %d, %d).\n', 0, total_year*365, total_year*365);
 
 % Creating agents and set Mood
 for i = 1:total_agents
-   agents(i) = Agent(total_year*365);
+   agents(i) = Agent(total_year*365, base_height, i);
    fprintf(trace, 'atom_trace(_, mood(%d, %d), [range(0, %d, true)]).\n', i, agents(i).Mood, total_year*365);
 end
 

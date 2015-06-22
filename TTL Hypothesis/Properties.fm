@@ -1,5 +1,5 @@
-content(type(save_lt_editor('d:/Documents/Sauvegarde C/Documents/INSA/4A/Comparative Modelling/1-Assignment/CM-Obesity/TTL Hypothesis/Properties.fm'))).
+content(type(save_lt_editor('D:\\Documents\\Sauvegarde C\\Documents\\INSA\\4A\\Comparative Modelling\\1-Assignment\\CM-Obesity\\TTL Hypothesis\\Properties.fm'))).
 content(generator(app(leadsto_software, 127, [lteditor:1, psprinting:1]))).
-content(run([date('Sat Jun 20 16:08:24 2015')])).
-sortdef(agent, [1, 2]).
-denotes('GP1', forall([t:interval, 'A':agent, m:'TRACE'], exists(['W':'REAL'], and(holds(state(m:'TRACE', time(t:interval)), weight('A', 'W'), true), 'W'>0)))).
+content(run([date('Mon Jun 22 11:03:46 2015')])).
+sortdef(agent, [1, 2, 3]).
+denotes('GP1', forall([t:interval, m:'TRACE'], exists(['BMI':'REAL', 'A':agent], and(holds(state(m:'TRACE', time(t:interval)), bmi('A', 'BMI'), true), 'BMI'>20)))).
