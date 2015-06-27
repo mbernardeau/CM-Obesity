@@ -1,5 +1,13 @@
 content(type(save_lt_editor('D:\\Documents\\Sauvegarde C\\Documents\\INSA\\4A\\Comparative Modelling\\1-Assignment\\CM-Obesity\\TTL Hypothesis\\Properties.fm'))).
 content(generator(app(leadsto_software, 127, [lteditor:1, psprinting:1]))).
-content(run([date('Mon Jun 22 11:03:46 2015')])).
+content(run([date('Sat Jun 27 13:52:38 2015')])).
 sortdef(agent, [1, 2, 3]).
-denotes('GP1', forall([t:interval, m:'TRACE'], exists(['BMI':'REAL', 'A':agent], and(holds(state(m:'TRACE', time(t:interval)), bmi('A', 'BMI'), true), 'BMI'>20)))).
+denotes('Obseity1', forall([t:interval, m:'TRACE'], exists(['BMI':'REAL'], and(holds(state(m:'TRACE', time(t:interval)), bmi(1, 'BMI'), true), 'BMI'>35)))).
+denotes('Overweight1', forall([t:interval, m:'TRACE'], exists(['BMI':'REAL'], and(holds(state(m:'TRACE', time(t:interval)), bmi(1, 'BMI'), true), and(bmi>25, bmi<30))))).
+denotes('Stabilization1', exists([t1:interval, m:'TRACE'], forall([t2:interval, 'BMI1':'REAL', 'BMI2':'REAL'], implies(and(t2>t1, holds(state(m:'TRACE', time(t1:interval)), bmi(1, 'BMI1'), true), holds(state(m:'TRACE', time(t2:interval)), bmi(1, 'BMI2'), true)), and('BMI2'>'BMI1'-1, 'BMI2'<'BMI1'+1))))).
+denotes('Obseity2', forall([t:interval, m:'TRACE'], exists(['BMI':'REAL'], and(holds(state(m:'TRACE', time(t:interval)), bmi(2, 'BMI'), true), 'BMI'>35)))).
+denotes('Overweight2', forall([t:interval, m:'TRACE'], exists(['BMI':'REAL'], and(holds(state(m:'TRACE', time(t:interval)), bmi(2, 'BMI'), true), and(bmi>25, bmi<30))))).
+denotes('Stabilization2', exists([t1:interval, m:'TRACE'], forall([t2:interval, 'BMI1':'REAL', 'BMI2':'REAL'], implies(and(t2>t1, holds(state(m:'TRACE', time(t1:interval)), bmi(2, 'BMI1'), true), holds(state(m:'TRACE', time(t2:interval)), bmi(2, 'BMI2'), true)), and('BMI2'>'BMI1'-1, 'BMI2'<'BMI1'+1))))).
+denotes('Obseity3', forall([t:interval, m:'TRACE'], exists(['BMI':'REAL'], and(holds(state(m:'TRACE', time(t:interval)), bmi(3, 'BMI'), true), 'BMI'>35)))).
+denotes('Overweight3', forall([t:interval, m:'TRACE'], exists(['BMI':'REAL'], and(holds(state(m:'TRACE', time(t:interval)), bmi(3, 'BMI'), true), and(bmi>25, bmi<30))))).
+denotes('Stabilization3', exists([t1:interval, m:'TRACE'], forall([t2:interval, 'BMI1':'REAL', 'BMI2':'REAL'], implies(and(t2>t1, holds(state(m:'TRACE', time(t1:interval)), bmi(3, 'BMI1'), true), holds(state(m:'TRACE', time(t2:interval)), bmi(3, 'BMI2'), true)), and('BMI2'>'BMI1'-1, 'BMI2'<'BMI1'+1))))).

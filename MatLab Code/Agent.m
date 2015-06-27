@@ -1,6 +1,5 @@
 classdef Agent
     %Agent A result of the simulation for an agent
-    %   Detailed explanation goes here
     
     properties
         Mood

@@ -1,5 +1,7 @@
 content(type(save_lt_editor('D:\\Documents\\Sauvegarde C\\Documents\\INSA\\4A\\Comparative Modelling\\1-Assignment\\CM-Obesity\\TTL Hypothesis\\Properties.fm'))).
 content(generator(app(leadsto_software, 127, [lteditor:1, psprinting:1]))).
-content(run([date('Mon Jun 22 11:03:00 2015')])).
+content(run([date('Sat Jun 27 13:47:04 2015')])).
 sortdef(agent, [1, 2, 3]).
-denotes('GP1', forall([t:interval, m:'TRACE'], exists(['BMI':'REAL', 'A':agent], and(holds(state(m:'TRACE', time(t:interval)), bmi('A', 'BMI'), true), 'BMI'>35)))).
+denotes('Obseity1', forall([t:interval, m:'TRACE'], exists(['BMI':'REAL'], and(holds(state(m:'TRACE', time(t:interval)), bmi(1, 'BMI'), true), 'BMI'>35)))).
+denotes('Overweight1', forall([t:interval, m:'TRACE'], exists(['BMI':'REAL'], and(holds(state(m:'TRACE', time(t:interval)), bmi(1, 'BMI'), true), and(bmi>25, bmi<30))))).
+denotes('Stabilization1', [formula]).
