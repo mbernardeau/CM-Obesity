@@ -22,14 +22,14 @@ display = fprintf('The simulation will run: %d Agents and take: %d Years\n', tot
 % Open trace file
 trace = fopen('trace.tr', 'w');
 % Duration of the simulation
-fprintf(trace, 'times(%d, %d, %d).\n', 0, total_year*365, total_year*365);
+fprintf(trace, 'times(%d, %d, %d).\n', 1, total_year*365, total_year*365);
 
 % Creating agents and set Mood
 for i = 1:total_agents
    %base_height = randomize_set(1.4, 2.2);
    %for debugging change set_mood() with i
-   agents(i) = Agent(total_year*365, base_height, set_mood());
-   fprintf(trace, 'atom_trace(_, mood(%d, %d), [range(0, %d, true)]).\n', i, agents(i).Mood, total_year*365);
+   agents(i) = Agent(total_year*365, base_height, mod(i,4));
+   fprintf(trace, 'atom_trace(_, mood(%d, %d), [range(1, %d, true)]).\n', i, agents(i).Mood, total_year*365);
 end
 
 %determine mood for each agent for the simulation:
